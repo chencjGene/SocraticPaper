@@ -1,0 +1,4 @@
+# Local paper test environments. Each test_* directory is one disposable paper sandbox.
+/test_*/
+/test_*
+
