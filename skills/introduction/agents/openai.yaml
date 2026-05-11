@@ -1,0 +1,4 @@
+interface:
+  display_name: "Socratic Introduction"
+  short_description: "Iteratively checks and updates introduction.md logic."
+  default_prompt: "Use $introduction to inspect introduction.md, ask the next missing logic question, and update the memory after I answer."

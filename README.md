@@ -101,7 +101,7 @@ Only after those questions are answered should the skill produce or revise the a
 | Status | Skill | Purpose |
 |---|---|---|
 | Planned | `abstract` | Build a concise problem-gap-method-result-contribution chain. |
-| Planned | `introduction` | Clarify motivation, literature gap, research question, and paper contribution. |
+| Initial implementation | `introduction` | Maintain `introduction.md`, check Introduction logic, ask targeted questions, and update the memory after each answer. |
 | Planned | `related-work` | Position the paper against prior work without turning into a list summary. |
 | Planned | `methods` | Check whether methods are reproducible, justified, and aligned with the question. |
 | Planned | `results` | Separate observation, analysis, and interpretation. |
@@ -144,7 +144,8 @@ Good. Now the abstract can claim a skill-based Socratic writing system, not a ge
 ## Roadmap
 
 - [x] Create the repository and initial project description.
-- [ ] Define the shared Socratic reasoning loop.
+- [x] Define the shared Socratic reasoning loop.
+- [x] Implement the first `introduction` skill with an `introduction.md` memory file.
 - [ ] Implement the first `abstract` skill.
 - [ ] Add rubrics and question banks for each manuscript section.
 - [ ] Add examples showing weak logic, follow-up questions, and improved outputs.
