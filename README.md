@@ -2,15 +2,6 @@
 
 SocraticPaper is a skill-first writing system for scientific papers. It is designed for researchers who do not want a passive writing assistant that only gives generic advice, but an active reasoning partner that can inspect the logic behind a paper section, challenge weak links, ask targeted follow-up questions, and keep iterating until the argument is coherent enough to write.
 
-The project is inspired by the skill-oriented structure of [Awesome Scientific Skills](https://github.com/InternScience/Awesome-Scientific-Skills), but focuses on one narrower problem: building Socratic, section-specific skills for paper writing.
-
-## Problem
-
-Many AI writing tools help with wording, polishing, outlining, or template-based drafting. Those tools are useful, but they are often static. They may tell a researcher what an abstract, introduction, or discussion should contain, yet they usually do not maintain a rigorous model of the paper's underlying argument.
-
-SocraticPaper starts from a different assumption: good scientific writing is not only a language-generation problem. It is a logic-construction problem.
-
-A paper section should make a set of claims, connect those claims to evidence, identify why the claims matter, and avoid overclaiming beyond the available data. If that logic is missing, vague, circular, or unsupported, the system should not simply rewrite the paragraph. It should ask.
 
 ## Goal
 
@@ -40,61 +31,22 @@ The system should not pretend that a paper is sound because the prose is fluent.
 
 ## Skill Architecture
 
-Each skill should be a small, focused reasoning module with a clear manuscript target.
+The current repository follows the actual skill layout below. Each skill is a self-contained folder under `skills/`, with a required `SKILL.md`, optional UI metadata in `agents/`, detailed section logic in `references/`, and deterministic helpers in `scripts/`.
 
 ```text
 skills/
-  abstract/
-    SKILL.md
-    rubric.md
-    question_bank.md
-    examples.md
   introduction/
     SKILL.md
-    rubric.md
-    question_bank.md
-    examples.md
-  discussion/
-    SKILL.md
-    rubric.md
-    question_bank.md
-    examples.md
+    agents/
+    references/
+    scripts/
 ```
 
-Every section skill should define:
+The working memory for the Introduction skill lives at the project root:
 
-| Component | Purpose |
-|---|---|
-| Section contract | What this paper section must accomplish. |
-| Logic schema | The expected structure of claims, evidence, gap, novelty, and contribution. |
-| Validation rules | How the skill detects weak or missing reasoning. |
-| Question policy | How the skill asks precise follow-up questions. |
-| Satisfaction criteria | When the skill can stop asking and proceed to drafting or revision. |
-| Failure modes | Common problems such as vague novelty, unsupported claims, or result-conclusion mismatch. |
-
-## Example: Abstract Skill
-
-The abstract skill should not begin by writing an abstract. It should first test whether the abstract has a defensible logic.
-
-An abstract usually needs:
-
-1. Background: what problem space the paper belongs to.
-2. Gap: what remains unknown, unresolved, inefficient, or poorly explained.
-3. Objective: what the paper tries to establish or solve.
-4. Method: what approach was used.
-5. Result: what was found.
-6. Contribution: why the result matters.
-7. Scope: what the paper does not claim.
-
-The skill should ask questions such as:
-
-- What is the exact research gap, and who currently feels this gap?
-- Is the objective a response to that gap, or merely a description of the method?
-- Which result directly supports the main claim?
-- Does the contribution follow from the result, or does it overreach?
-- What must be excluded from the abstract to avoid claiming too much?
-
-Only after those questions are answered should the skill produce or revise the abstract.
+```text
+xx.md
+```
 
 ## Planned Skill Categories
 
@@ -131,16 +83,6 @@ SocraticPaper:
 Good. Now the abstract can claim a skill-based Socratic writing system, not a general writing assistant.
 ```
 
-## Design Principles
-
-- Ask before inventing.
-- Validate reasoning before improving style.
-- Prefer precise questions over broad advice.
-- Keep each skill small enough to inspect and improve.
-- Make stopping conditions explicit.
-- Treat paper writing as an argument-building process.
-- Preserve the researcher's agency and domain judgment.
-
 ## Roadmap
 
 - [x] Create the repository and initial project description.
@@ -158,4 +100,4 @@ This repository is at the concept and architecture stage. The first milestone is
 
 ## License
 
-License to be decided.
+本项目采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 协议开源。
