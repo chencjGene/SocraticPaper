@@ -39,6 +39,8 @@ Follow this loop exactly:
 
 Do not write a polished Introduction before the logic passes the framework check unless the user explicitly asks for a rough draft.
 
+When the user asks for an outline, do not only list section contents. For each module, explicitly state what the module must prove, how it follows from the previous module, what transition point carries the reader into the next module, and which later method component or contribution it prepares. Introduction logic depends on the causal chain between modules, not only on local paragraph content.
+
 ## Memory Update Rules
 
 When updating `introduction.md`:
@@ -49,8 +51,11 @@ When updating `introduction.md`:
 - Record key decisions under `## Confirmed Logic`.
 - Mark weak or inferred content as `Needs verification`.
 - Keep transition sentences visible, because the reference framework treats them as important links between paragraphs.
+- Record user preferences about writing and interaction style under `## Confirmed Logic` or `## Revision State` when they affect later drafting.
 
 Use concise Markdown. Do not hide uncertainty by rewriting it as a confident claim.
+
+If the user proposes a claim, structure, or wording that appears logically weak, too broad, unsupported, or inconsistent with the current memory, raise the concern directly and briefly before accepting it. Offer a safer formulation or ask the minimum question needed to resolve the issue. Do not silently encode a questionable claim as settled logic.
 
 ## Question Policy
 
@@ -68,6 +73,17 @@ Prefer questions that force a logical decision:
 
 Avoid generic advice such as "make it clearer" or "add more detail." Ask for the missing premise.
 
+Do not over-question. Once the central Introduction chain is coherent enough to draft, stop asking for fine-grained details such as dataset names, exact baseline lists, minor metric values, citation formatting, or implementation minutiae unless they are essential to the Introduction's main claim. Mark these as later polish items instead of blocking drafting.
+
+Prefer stopping at the level of detail needed for a strong Introduction:
+
+- The research area and concrete problem are clear.
+- The limitation of existing methods motivates the core idea.
+- The core idea is stated in one or two sentences.
+- The technical challenges are few, real, and mapped to method components.
+- The method has enough structure to explain how it addresses the challenges.
+- Contributions include only claims the paper can support at Introduction level.
+
 ## Stop Conditions
 
 The skill may proceed to drafting or revision when:
@@ -79,7 +95,21 @@ The skill may proceed to drafting or revision when:
 - Transition sentences explain why each paragraph follows from the previous one.
 - No central claim is marked `Needs verification`.
 
-If these conditions are not met, keep asking.
+When these conditions are met, state clearly that the Introduction logic is ready for rough drafting or revision, and stop the Socratic questioning loop. Do not continue asking increasingly detailed questions just because more information could be useful later.
+
+If these conditions are not met, keep asking for the single most important missing premise. If only non-central details remain, do not block drafting; record them as later polish items.
+
+## Drafting Policy
+
+When drafting a completed Introduction from the memory or from a user-provided prompt:
+
+- Use the confirmed outline order unless the user explicitly asks to reorganize.
+- Preserve user-specified English terms exactly when the user asks for exact wording.
+- Keep the core idea concise; if requested, merge it with the technical-challenge paragraph.
+- Use challenge labels only when the user wants them, and make each challenge map to a method component.
+- Put summary contributions in a clear contribution list when requested.
+- Avoid inventing unsupported numbers, dataset names, baseline names, citation keys, or implementation details.
+- If the user's provided drafting prompt is too rigid, ambiguous, or mismatched to the current outline, briefly optimize it first, then generate using the optimized version.
 
 ## Optional Deterministic Check
 
