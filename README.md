@@ -61,27 +61,15 @@ xx.md
 | Planned | `limitations` | Make limitations specific, honest, and useful rather than ceremonial. |
 | Planned | `review-response` | Turn reviewer comments into structured revisions and evidence-backed replies. |
 
-## Interaction Pattern
+## Usage (Introduction as Example)
 
-A typical session should feel like this:
+There are two common ways to use the `socratic-introduction` skill.
 
-```text
-User: Here are my notes for the abstract.
+First, invoke `socratic-introduction` directly. The model will start from basic questions and guide the user through the logic of the Introduction section.
 
-SocraticPaper:
-I see a proposed method and a claimed contribution, but the gap is still implicit.
-Before writing, I need to know: what existing approach fails, and why does that failure matter?
+Second, invoke `socratic-introduction` with the content that already exists. The model will inspect the current material first, then ask targeted follow-up questions based on what is missing, unclear, or logically weak.
 
-User: Existing tools can summarize papers, but they do not test whether the argument is logically sound.
-
-SocraticPaper:
-That is closer. Is your contribution a new writing interface, a logic-checking framework, or a set of section-specific skills?
-
-User: A set of section-specific skills with an iterative logic-checking loop.
-
-SocraticPaper:
-Good. Now the abstract can claim a skill-based Socratic writing system, not a general writing assistant.
-```
+All content will be saved as `introduction.md`. The next time `socratic-introduction` is invoked, the session can continue from the existing `introduction.md` file.
 
 ## Roadmap
 
