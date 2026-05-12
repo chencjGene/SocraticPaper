@@ -2,3 +2,13 @@
 /test_*/
 /test_*
 
+# Skill-generated paper memory files.
+/introduction.md
+/abstract.md
+/related-work.md
+/methods.md
+/results.md
+/discussion.md
+/limitations.md
+/review-response.md
+
