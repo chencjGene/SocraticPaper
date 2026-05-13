@@ -54,7 +54,7 @@ xx.md
 |---|---|---|
 | 计划中 | `abstract` | 构建简洁的问题-空白-方法-结果-贡献链条。 |
 | 初始实现 | `introduction` | 维护 `introduction.md`，检查 Introduction 的逻辑，提出有针对性的问题，并在每次回答后更新记忆。 |
-| 计划中 | `related-work` | 将论文放到既有工作的语境中，而不是变成文献清单式总结。 |
+| 初始实现 | `related-work` | 维护 `related-work.md`，要求先提供相关工作语料，并围绕两层 n+m 分类和一层对比进行追问。 |
 | 计划中 | `methods` | 检查方法是否可复现、有充分理由，并且与研究问题一致。 |
 | 计划中 | `results` | 区分观察、分析和解释。 |
 | 计划中 | `discussion` | 将发现连接到其意义，同时避免过度声称。 |
@@ -76,6 +76,7 @@ xx.md
 - [x] 创建仓库和初始项目描述。
 - [x] 定义共享的苏格拉底式推理循环。
 - [x] 实现第一个 `introduction` skill，并使用 `introduction.md` 作为记忆文件。
+- [x] 实现第一个 `related-work` skill，并加入语料、分类和对比检查。
 - [ ] 实现第一个 `abstract` skill。
 - [ ] 为每个论文章节添加 rubrics 和问题库。
 - [ ] 添加示例，展示薄弱逻辑、追问和改进后的输出。

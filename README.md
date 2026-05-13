@@ -54,7 +54,7 @@ xx.md
 |---|---|---|
 | Planned | `abstract` | Build a concise problem-gap-method-result-contribution chain. |
 | Initial implementation | `introduction` | Maintain `introduction.md`, check Introduction logic, ask targeted questions, and update the memory after each answer. |
-| Planned | `related-work` | Position the paper against prior work without turning into a list summary. |
+| Initial implementation | `related-work` | Maintain `related-work.md`, require a scoped corpus, organize prior work with a two-layer n+m taxonomy, and ask targeted comparison questions. |
 | Planned | `methods` | Check whether methods are reproducible, justified, and aligned with the question. |
 | Planned | `results` | Separate observation, analysis, and interpretation. |
 | Planned | `discussion` | Connect findings to implications while avoiding overclaiming. |
@@ -76,6 +76,7 @@ All content will be saved as `introduction.md`. The next time `socratic-introduc
 - [x] Create the repository and initial project description.
 - [x] Define the shared Socratic reasoning loop.
 - [x] Implement the first `introduction` skill with an `introduction.md` memory file.
+- [x] Implement the first `related-work` skill with corpus, taxonomy, and comparison checks.
 - [ ] Implement the first `abstract` skill.
 - [ ] Add rubrics and question banks for each manuscript section.
 - [ ] Add examples showing weak logic, follow-up questions, and improved outputs.
