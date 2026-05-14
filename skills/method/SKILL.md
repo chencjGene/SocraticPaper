@@ -20,6 +20,14 @@ At the start of every invocation:
 
 Treat `method.md` as the shared thinking memory between the user and the agent. It should contain problem formulation, preliminary/background decisions, prerequisites, method overview, two-layer chains, module plans, sub-module descriptions, formula-level definitions, the mathematical symbol table, unresolved questions, and revision state.
 
+## PDF Input Check
+
+If the user provides a PDF, extract or read its text before judging the Method section. If a companion text file extracted from the same PDF is available, prefer using it as the readable source while treating the PDF as the original document.
+
+Check the PDF content against every relevant requirement in this skill and in `references/method-framework.md`, including problem formulation, input/output definitions, prerequisites, preliminary/background decision, method overview, first-layer and second-layer chains, module plans, sub-module descriptions, formula-level specifications, and mathematical symbol consistency.
+
+If the PDF does not satisfy a requirement, list the issue explicitly for the user under a warning or reminder section. Each warning should name the missing or weak requirement, briefly explain what evidence was found or not found in the PDF, and state what the user should add, revise, or verify. Do not silently assume that missing PDF content exists elsewhere unless it is present in `method.md`.
+
 ## Persistence Contract
 
 All durable state for this skill must live in `method.md`.

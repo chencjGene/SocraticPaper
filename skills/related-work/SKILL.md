@@ -19,6 +19,14 @@ At the start of every invocation:
 
 Treat `related-work.md` as the shared thinking memory between the user and the agent. It should contain the paper context, full related-work corpus, two-layer taxonomy, comparison logic, unresolved questions, user answers, and revision state.
 
+## PDF Input Check
+
+If the user provides a PDF, extract or read its text before judging the Related Work section. If a companion text file extracted from the same PDF is available, prefer using it as the readable source while treating the PDF as the original document.
+
+Check the PDF content against every relevant requirement in this skill and in `references/related-work-framework.md`, including corpus completeness, paper context alignment, two-level taxonomy, first-layer comparison logic, close-work contrast, and fair treatment of prior work.
+
+If the PDF does not satisfy a requirement, list the issue explicitly for the user under a warning or reminder section. Each warning should name the missing or weak requirement, briefly explain what evidence was found or not found in the PDF, and state what the user should add, revise, or verify. Do not silently assume that missing PDF content exists elsewhere unless it is present in `related-work.md`.
+
 ## Persistence Contract
 
 All durable state for this skill must live in `related-work.md`.

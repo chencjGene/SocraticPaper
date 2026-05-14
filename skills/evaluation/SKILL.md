@@ -23,6 +23,14 @@ At the start of every invocation:
 
 Treat `evaluation.md` as the shared thinking memory between the user and the agent. It should contain experimental settings, related-work-derived coverage checks, main results, improvement analysis, ablation or evaluation studies, unresolved questions, user answers, and revision state.
 
+## PDF Input Check
+
+If the user provides a PDF, extract or read its text before judging the Evaluation section. If a companion text file extracted from the same PDF is available, prefer using it as the readable source while treating the PDF as the original document.
+
+Check the PDF content against every relevant requirement in this skill and in `references/evaluation-framework.md`, including related-work prerequisite, dataset coverage, baseline coverage, metric coverage, implementation details, main-results table, improvement analysis, ablation or evaluation studies, and optional case or field evidence when relevant.
+
+If the PDF does not satisfy a requirement, list the issue explicitly for the user under a warning or reminder section. Each warning should name the missing or weak requirement, briefly explain what evidence was found or not found in the PDF, and state what the user should add, revise, or verify. Do not silently assume that missing PDF content exists elsewhere unless it is present in `evaluation.md` or the related-work prerequisite file.
+
 ## Persistence Contract
 
 All durable state for this skill must live in `evaluation.md`.
