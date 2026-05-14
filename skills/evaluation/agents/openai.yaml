@@ -1,0 +1,4 @@
+interface:
+  display_name: "Socratic Evaluation"
+  short_description: "Checks experimental settings, related-work coverage, main-result gains, and ablation evidence in evaluation.md."
+  default_prompt: "Use $evaluation to read evaluation.md first, verify related-work.md exists with a corpus, check datasets/baselines/metrics against related work, then ask the next missing experimental-evidence question."
