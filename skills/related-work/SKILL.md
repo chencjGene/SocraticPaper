@@ -15,6 +15,7 @@ At the start of every invocation:
 2. If it does not exist, create it from the template structure in this skill.
 3. Read the full `related-work.md` file before giving advice.
 4. Read `references/related-work-framework.md` before judging completeness.
+5. If `introduction.md` exists in the workspace root, read it and use it as paper context for the Related Work logic. If it is missing and the user's request would benefit from paper-context alignment, ask whether they want to provide or create one.
 
 Treat `related-work.md` as the shared thinking memory between the user and the agent. It should contain the paper context, full related-work corpus, two-layer taxonomy, comparison logic, unresolved questions, user answers, and revision state.
 
@@ -94,6 +95,15 @@ You may propose a candidate `n+m` taxonomy and candidate comparison points when 
 
 When proposing, label it clearly as a proposal and ask the user to confirm or correct it. Do not silently treat your proposed taxonomy as final.
 
+Taxonomy quality rules:
+
+- First-layer families must be mutually distinct. Do not create overlapping first-layer categories such as a broad "general methods" family plus another family that is actually a subset of it.
+- First-layer families should reflect the main argumentative structure of the Related Work, not merely data availability, citation order, or publication type.
+- Second-layer subfamilies must express a conceptual, mechanism-level, evidence-source, assumption-level, or problem-setting distinction.
+- Do not use bibliographic type as a second-layer taxonomy, such as "survey vs. method," unless the user's target section is explicitly a literature review paper about publication types.
+- A survey paper should usually be used as broad framing for a family or paragraph, not forced into a standalone subfamily.
+- When the user rejects a taxonomy or comparison, write both the rejected point and the accepted correction into `related-work.md` so the same mistake is not repeated.
+
 Good proposal format:
 
 ```markdown
@@ -112,6 +122,17 @@ Candidate comparison at the first-layer level:
 ```
 
 After the user responds, update `## Two-Level Taxonomy`, `## N-Level Comparisons`, and `## Confirmed Logic`.
+
+## Drafting Rules
+
+When drafting a polished Related Work section:
+
+- Use the accepted first-layer taxonomy as the subsection or paragraph-level structure unless the user asks for another style.
+- For each first-layer family, normally write one paragraph that fairly summarizes representative works and one paragraph that combines the limitation of that family with the comparison to the user's method.
+- Do not split the limitation and the comparison into separate paragraphs for the same first-layer family unless the family is unusually large or the user asks for a more expanded draft.
+- The limitation paragraph should first acknowledge what the family does well, then state the specific bottleneck for the user's problem, and then contrast the user's method on the same axis.
+- Keep comparison at the first-layer family level. Use second-layer subfamilies to organize representative works, not to fragment the main comparison into many small criticisms.
+- When a user identifies a specific limitation axis, such as context-window limits, large-scale data limits, supervision assumptions, or cross-row evidence, keep the paragraph focused on that axis instead of adding extra unrelated critiques.
 
 ## Memory Update Rules
 
