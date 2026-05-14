@@ -34,6 +34,7 @@ SocraticPaper 旨在构建一组像苏格拉底式审稿人一样工作的论文
 |---|---|---|
 | `introduction` | 构建并检查论文 Introduction 的逻辑链条。 | `introduction.md` |
 | `related-work` | 构建相关工作语料、两层分类体系和对比逻辑。 | `related-work.md` |
+| `method` | 构建问题定义、可选 preliminary/background、公式级方法链、模块计划和数学符号一致性。 | `method.md` |
 
 用户保留最终科学判断。skills 只帮助暴露缺失前提、薄弱主张、缺乏支撑的创新性，或尚未成立的段落过渡。
 
@@ -53,6 +54,11 @@ skills/
     agents/openai.yaml
     references/related-work-framework.md
     scripts/check-related-work-memory.ps1
+  method/
+    SKILL.md
+    agents/openai.yaml
+    references/method-framework.md
+    scripts/check-method-memory.ps1
 ```
 
 ## 使用方式
@@ -68,7 +74,7 @@ skill 的工作记忆会保存在仓库根目录，例如 `introduction.md` 或 
 | 计划中 | `abstract` | 构建简洁的问题-空白-方法-结果-贡献链条。 |
 | 初始实现 | `introduction` | 维护 `introduction.md`，检查 Introduction 的逻辑，提出有针对性的问题，并在每次回答后更新记忆。 |
 | 初始实现 | `related-work` | 维护 `related-work.md`，要求先提供相关工作语料，并围绕两层 n+m 分类和一层对比进行追问。 |
-| 计划中 | `methods` | 检查方法是否可复现、有充分理由，并且与研究问题一致。 |
+| 初始实现 | `method` | 维护 `method.md`，要求问题定义和整体 overview，判断是否需要 preliminary/background，构建模块计划和两层公式链，并检查符号一致性。 |
 | 计划中 | `results` | 区分观察、分析和解释。 |
 | 计划中 | `discussion` | 将发现连接到其意义，同时避免过度声称。 |
 | 计划中 | `limitations` | 让局限性具体、诚实且有用，而不是流于形式。 |
@@ -80,6 +86,7 @@ skill 的工作记忆会保存在仓库根目录，例如 `introduction.md` 或 
 - [x] 定义共享的苏格拉底式推理循环。
 - [x] 实现第一个 `introduction` skill，并使用 `introduction.md` 作为记忆文件。
 - [x] 实现第一个 `related-work` skill，并加入语料、分类和对比检查。
+- [x] 实现第一个 `method` skill，并加入两层链和符号表检查。
 - [ ] 实现第一个 `abstract` skill。
 - [ ] 为每个论文章节添加 rubrics 和问题库。
 - [ ] 添加示例，展示薄弱逻辑、追问和改进后的输出。

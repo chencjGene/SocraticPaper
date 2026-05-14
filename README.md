@@ -14,6 +14,7 @@ Current skills:
 |---|---|---|
 | `introduction` | Builds and checks the logic of a paper Introduction. | `introduction.md` |
 | `related-work` | Builds a scoped related-work corpus, taxonomy, and comparison logic. | `related-work.md` |
+| `method` | Builds problem formulation, optional preliminary/background, formula-level method chains, module plans, and notation consistency. | `method.md` |
 
 The user keeps final scientific judgment. The skills only help expose missing premises, weak claims, unsupported novelty, or transitions that do not yet hold.
 
@@ -33,6 +34,11 @@ skills/
     agents/openai.yaml
     references/related-work-framework.md
     scripts/check-related-work-memory.ps1
+  method/
+    SKILL.md
+    agents/openai.yaml
+    references/method-framework.md
+    scripts/check-method-memory.ps1
 ```
 
 ### Introduction Skill
@@ -79,6 +85,28 @@ Optional structural check:
 powershell -ExecutionPolicy Bypass -File skills\related-work\scripts\check-related-work-memory.ps1 related-work.md
 ```
 
+### Method Skill
+
+When a user invokes the `method` skill:
+
+1. Locate `method.md` in the workspace root; create it if missing.
+2. Read `method.md` and `skills/method/references/method-framework.md`.
+3. Persist every user-provided method detail into `method.md` before using it as settled context.
+4. Require problem formulation, model input/output, preliminary material or reference papers, and a whole-method overview before building the method.
+5. Decide whether a separate Preliminary/Background section is needed for complex concepts or a strong baseline dependency.
+6. Build module plans with names, motivations, basic ideas, and detailed steps.
+7. Build a first-layer chain from method input through modules and intermediate states to final output.
+8. Build a second-layer chain for each module from module input through sub-modules and intermediate states to module output.
+9. Require each sub-module to start from the user's plain-language description, then formalize it into formula-level transformations.
+10. Maintain a mathematical symbol table and check every update for duplicated or conflicting notation.
+11. Ask targeted questions until the method is precise enough to draft or revise.
+
+Optional structural check:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File skills\method\scripts\check-method-memory.ps1 method.md
+```
+
 Do not draft polished prose before the logic passes unless the user explicitly asks for a rough draft. Mark uncertain claims as `Needs verification` instead of turning them into confident statements.
 
 ## Planned Skill Categories
@@ -88,7 +116,7 @@ Do not draft polished prose before the logic passes unless the user explicitly a
 | Planned | `abstract` | Build a concise problem-gap-method-result-contribution chain. |
 | Initial implementation | `introduction` | Maintain `introduction.md`, check Introduction logic, ask targeted questions, and update the memory after each answer. |
 | Initial implementation | `related-work` | Maintain `related-work.md`, require a scoped corpus, organize prior work with a two-layer n+m taxonomy, and ask targeted comparison questions. |
-| Planned | `methods` | Check whether methods are reproducible, justified, and aligned with the question. |
+| Initial implementation | `method` | Maintain `method.md`, require problem formulation and overview, decide whether preliminary/background is needed, build module plans and two-layer formula chains, and enforce notation consistency. |
 | Planned | `results` | Separate observation, analysis, and interpretation. |
 | Planned | `discussion` | Connect findings to implications while avoiding overclaiming. |
 | Planned | `limitations` | Make limitations specific, honest, and useful rather than ceremonial. |
@@ -106,6 +134,7 @@ Skill working memory is saved at the repository root, such as `introduction.md` 
 - [x] Define the shared Socratic reasoning loop.
 - [x] Implement the first `introduction` skill with an `introduction.md` memory file.
 - [x] Implement the first `related-work` skill with corpus, taxonomy, and comparison checks.
+- [x] Implement the first `method` skill with two-layer chains and symbol-table checks.
 - [ ] Implement the first `abstract` skill.
 - [ ] Add rubrics and question banks for each manuscript section.
 - [ ] Add examples showing weak logic, follow-up questions, and improved outputs.

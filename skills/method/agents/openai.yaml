@@ -1,0 +1,4 @@
+interface:
+  display_name: "Socratic Method"
+  short_description: "Iteratively checks method overview, two-layer chains, formulas, and notation in method.md."
+  default_prompt: "Use $method to read method.md first, check prerequisites and the two-layer method chains, maintain the symbol table, and ask the next missing formula-level question."
