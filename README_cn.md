@@ -1,7 +1,6 @@
 # SocraticPaper
 
-SocraticPaper 是一个以 skill 为核心的科研论文写作系统。它面向那些不想要被动写作助手的研究者：这个系统不会只给出泛泛的建议，而是作为一个主动的推理伙伴，检查论文某一部分背后的逻辑，挑战薄弱环节，提出有针对性的追问，并持续迭代，直到论证足够连贯，可以进入写作。
-
+SocraticPaper 是一个以 Agent Skill 为核心的科研论文写作系统。它面向那些不想要被动写作助手的研究者：这个系统不会只给出泛泛的建议，而是作为一个主动的推理伙伴，检查论文某一部分背后的逻辑，挑战薄弱环节，提出有针对性的追问，并持续迭代，直到论证足够连贯，可以进入写作。
 
 ## 目标
 
@@ -29,6 +28,15 @@ SocraticPaper 旨在构建一组像苏格拉底式审稿人一样工作的论文
 | 研究者参与判断 | 用户仍然负责科学判断；skill 帮助暴露哪些问题必须被决定。 |
 | Skill-first 架构 | 项目被组织为可复用的 agent skills，而不是一个单体 prompt。 |
 
+## 当前 Skills
+
+| Skill | 用途 | 维护的主文件 |
+|---|---|---|
+| `introduction` | 构建并检查论文 Introduction 的逻辑链条。 | `introduction.md` |
+| `related-work` | 构建相关工作语料、两层分类体系和对比逻辑。 | `related-work.md` |
+
+用户保留最终科学判断。skills 只帮助暴露缺失前提、薄弱主张、缺乏支撑的创新性，或尚未成立的段落过渡。
+
 ## Skill 架构
 
 当前仓库遵循下面的实际 skill 布局。每个 skill 都是 `skills/` 下的一个自包含文件夹，其中包含必需的 `SKILL.md`、可选的 `agents/` UI 元数据、`references/` 中的详细章节逻辑，以及 `scripts/` 中的确定性辅助脚本。
@@ -37,16 +45,21 @@ SocraticPaper 旨在构建一组像苏格拉底式审稿人一样工作的论文
 skills/
   introduction/
     SKILL.md
-    agents/
-    references/
-    scripts/
+    agents/openai.yaml
+    references/introduction-framework.md
+    scripts/check-introduction-memory.ps1
+  related-work/
+    SKILL.md
+    agents/openai.yaml
+    references/related-work-framework.md
+    scripts/check-related-work-memory.ps1
 ```
 
-Introduction skill 的工作记忆位于项目根目录：
+## 使用方式
 
-```text
-xx.md
-```
+可以直接唤起某个 skill，例如 `socratic-introduction` 或 `socratic-related-work`。大模型可以从基本问题开始，也可以先检查已有材料，再根据缺失、不清楚或逻辑薄弱的地方提出有针对性的追问。
+
+skill 的工作记忆会保存在仓库根目录，例如 `introduction.md` 或 `related-work.md`。下次唤起对应 skill 时，可以从已有文件接着继续。
 
 ## 计划中的 Skill 类别
 
@@ -61,16 +74,6 @@ xx.md
 | 计划中 | `limitations` | 让局限性具体、诚实且有用，而不是流于形式。 |
 | 计划中 | `review-response` | 将审稿意见转化为结构化修改和有证据支撑的回复。 |
 
-## 使用方式（以 Introduction 为例）
-
-`socratic-introduction` skill 有两种常见使用方式。
-
-第一种，直接唤起 `socratic-introduction`。大模型会从基本问题开始提问，引导用户梳理 Introduction 部分的逻辑。
-
-第二种，唤起 `socratic-introduction`，并将目前已有的内容放入。大模型会先检查当前材料，然后根据缺失、不清楚或逻辑薄弱的地方提出有针对性的追问。
-
-所有内容都会以 `introduction.md` 的形式保存。下次唤起 `socratic-introduction` 时，可以从已有的 `introduction.md` 文件接着继续。
-
 ## 路线图
 
 - [x] 创建仓库和初始项目描述。
@@ -81,11 +84,11 @@ xx.md
 - [ ] 为每个论文章节添加 rubrics 和问题库。
 - [ ] 添加示例，展示薄弱逻辑、追问和改进后的输出。
 - [ ] 添加测试或评估轨迹，用于判断 skill 是否提出了正确的问题。
-- [ ] 扩展到 introduction、discussion、limitations 和 reviewer response。
+- [ ] 扩展到 methods、results、discussion、limitations 和 reviewer response。
 
 ## 仓库状态
 
-本仓库目前处于概念和架构阶段。第一个里程碑是将 abstract 工作流转化为一个可以复用、测试和改进的具体 skill。
+本仓库目前处于概念和架构阶段。当前里程碑是把抽象的写作工作流逐步转化为可以复用、测试和改进的具体 skills。
 
 ## License
 
