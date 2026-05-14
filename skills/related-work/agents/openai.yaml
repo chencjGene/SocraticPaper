@@ -1,0 +1,4 @@
+interface:
+  display_name: "Socratic Related Work"
+  short_description: "Iteratively checks corpus, taxonomy, and comparison logic in related-work.md."
+  default_prompt: "Use $related-work to read related-work.md first, persist any papers or answers I provide into related-work.md, then ask the next missing corpus/taxonomy/comparison question."
